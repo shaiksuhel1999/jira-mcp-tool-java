@@ -1,0 +1,45 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: jira-mcp-toolkit-server
+
+  ai:
+    mcp:
+      server:
+        name: jira-mcp-server
+        version: 1.1.2
+        enabled: true
+
+        # ✅ Transport
+        protocol: streamable
+
+        # ✅ Streamable HTTP settings
+        streamable-http:
+          mcp-endpoint: /mcp
+          disallow-delete: false
+
+        # ✅ Tool discovery
+        annotation-scanner:
+          enabled: true
+
+        # ✅ Execution model
+        type: async
+
+        # ✅ Timeouts (milliseconds)
+        request-timeout: 60000
+
+        # ✅ Capabilities advertised
+        capabilities:
+          tool: true
+          prompt: true
+          resource: true
+          completion: false
+
+        # ✅ Optional description
+        instructions: "This MCP server provides crypto market tools"
+
+        # ⚠️ Metadata notifications
+        tool-change-notification: true
+        resource-change-notification: true
+        prompt-change-notification: true

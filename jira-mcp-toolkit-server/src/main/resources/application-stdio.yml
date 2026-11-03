@@ -1,0 +1,49 @@
+server:
+  port: 8082
+logging:
+  level:
+    root: OFF
+spring:
+  main:
+    web-application-type: none
+    banner-mode: off
+  application:
+    name: jira-mcp-toolkit-server
+
+  ai:
+    mcp:
+      server:
+        name: jira-market-mcp-server
+        version: 1.1.2
+        enabled: true
+        
+        # Stdio Enabled
+        stdio: true
+
+        # Transport
+        protocol: stateless
+
+        # Tool discovery
+        annotation-scanner:
+          enabled: true
+
+        # Execution model
+        type: async
+
+        # Timeouts
+        request-timeout: 6000
+
+        # Capabilities advertised to the client
+        capabilities:
+          tool: true
+          prompt: true
+          resource: true
+          completion: false
+
+        # Optional server instructions
+        instructions: "This MCP server provides crypto market tools"
+
+        # Change notifications (metadata only)
+        tool-change-notification: true
+        resource-change-notification: true
+        prompt-change-notification: true

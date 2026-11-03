@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: jira-mcp-toolkit-client
+
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3.2:3b
+    mcp:
+      client:
+        enabled: true
+        initialized: true
+        annotation-scanner:
+          enabled: true
+        root-change-notification: true
+        toolcallback:
+          enabled: true
+        name: jira-mcp-toolkit-client
+        version: 1.1.2
+        request-timeout: 30s
+        type: async
+        stdio:
+          servers-configuration: classpath:/mcp-servers-config.json
+
+logging:
+  level:
+    '[org.springframework.ai]': DEBUG

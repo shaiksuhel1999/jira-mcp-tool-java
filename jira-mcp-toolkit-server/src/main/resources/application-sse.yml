@@ -1,0 +1,44 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: jira-mcp-toolkit-server
+
+  ai:
+    mcp:
+      server:
+        name: jira-mcp-server
+        version: 1.1.2
+        enabled: true
+
+        # Transport
+        protocol: sse
+
+        # SSE endpoints
+        sse-endpoint: /sse
+        sse-message-endpoint: /mcp/message
+
+        # Tool discovery
+        annotation-scanner:
+          enabled: true
+
+        # Execution model
+        type: async
+
+        # Timeouts
+        request-timeout: 600000
+
+        # Capabilities
+        capabilities:
+          tool: true
+          prompt: false
+          resource: false
+          completion: false
+
+        # Optional description
+        instructions: "This MCP server provides Jira tools"
+
+        # Metadata notifications
+        tool-change-notification: true
+        resource-change-notification: true
+        prompt-change-notification: true
